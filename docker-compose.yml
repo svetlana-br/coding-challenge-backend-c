@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    image: 'postgres:latest'
+    container_name: suggestions_db
+    ports:
+      - '5438:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: suggestions_dev
+    volumes:
+      - ./database/init:/docker-entrypoint-initdb.d
+      - ./database/files:/mnt/db
